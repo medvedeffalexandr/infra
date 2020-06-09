@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: create resource group
+      azure_rm_resourcegroup:
+        name: ansible-rg
+        location: westeurope
+      register: rg
+    - debug:
+        var: rg
+

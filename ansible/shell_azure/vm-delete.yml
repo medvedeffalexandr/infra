@@ -1,0 +1,24 @@
+- name: remove only vm
+  hosts: localhost
+  gather_facts: false
+  connection: local
+  tasks:
+    - name: power off vm
+      azure_rm_virtualmachine:
+        resource_group: resource_group
+        name: inno-test-comp
+        started: no
+
+    - name: remove only vm
+      azure_rm_virtualmachine:
+        resource_group: resource_group
+        name: inno-test-comp
+        remove_on_absent: all_autocreated
+        state: absent
+
+    - name: delete managed disk
+      azure_rm_manageddisk:
+        name: disk-os-test-comp
+        location: westeurope
+        resource_group: resource_group
+        state: absent

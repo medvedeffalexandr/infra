@@ -1,0 +1,23 @@
+- name: create vm
+  gather_facts: no
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: create vm
+      azure_rm_virtualmachine:
+        name: test-comp
+        os_type: Linux
+        resource_group: resource_group
+        subnet_name: subnet
+        network_interfaces: nic-test-comp
+        os_disk_name: disk-os-test-comp
+        vm_size: Standard_A4_v2
+        managed_disk_type: Standard_LRS
+        ssh_password_enabled: false
+        admin_username: user
+        ssh_public_keys:
+          - path: /home/user/.ssh/authorized_keys
+            key_data: 'ssh-rsa ...'
+        image:
+          name: image-test-comp
+          resource_group: resource_group

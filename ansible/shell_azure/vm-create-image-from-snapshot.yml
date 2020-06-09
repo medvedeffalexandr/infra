@@ -1,0 +1,14 @@
+- name: create an image from snapshot
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: create an image from snapshot
+      azure_rm_image:
+        resource_group: resource_group
+        name: image-test-comp
+        source:
+          type: snapshots
+          resource_group: resource_group
+          name: snapshot_disk
+        os_type: Linux

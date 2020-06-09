@@ -1,0 +1,16 @@
+version: "2"
+
+volumes:
+    registry_data: {}
+
+services:
+  registry:
+    image: registry:2
+    container_name: registry
+    restart: always
+    volumes:
+      - registry_data:/var/lib/registry
+      - ./config.yml:/etc/docker/registry/config.yml
+    mem_limit: 1024M
+    ports:
+      - "192.168.0.105:5000:5000"

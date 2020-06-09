@@ -1,0 +1,16 @@
+version: "2"
+
+services:
+  prometheus:
+    image: innodockerregistry.azurecr.io/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - /etc/localtime:/etc/localtime
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.retention.time=168h'
+    restart: always
+    mem_limit: 3072M
+    ports:
+      - "10.9.21.13:8070:9090"

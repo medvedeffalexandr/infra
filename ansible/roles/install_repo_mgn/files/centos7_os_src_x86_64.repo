@@ -1,0 +1,6 @@
+[centos7_os_src_x86_64]
+name= CentOS 7 source packages for x86_64
+baseurl=http://repo_url
+enabled=1
+gpgcheck=0
+

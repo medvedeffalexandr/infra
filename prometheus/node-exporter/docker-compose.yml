@@ -1,0 +1,19 @@
+version: "2"
+
+services:
+  node-exporter:
+    image: innodockerregistry.azurecr.io/node-exporter
+    container_name: node-exporter
+    restart: always
+    mem_limit: 256M
+    ports:
+      - "0.0.0.0:8010:9100"
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.rootfs=/rootfs'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'

@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  emm-mobile-backend:
+    image: image_name
+    container_name: container_name
+    restart: always
+    mem_limit: 2560m
+    volumes:
+      - /opt/logs_mobile:/opt/data/project/files/logs_mobile:rw
+    ports:
+      - '127.0.0.1:5000:8000'

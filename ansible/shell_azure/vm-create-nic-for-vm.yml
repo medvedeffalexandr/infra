@@ -1,0 +1,24 @@
+---
+
+- name: create nic with private IP (no public IP)
+  hosts: localhost
+  gather_facts: false
+  connection: local
+  tasks:
+    - name: create nic with private IP (no public IP)
+      azure_rm_networkinterface:
+        name: nic-test-comp
+        resource_group: Innopolis-RG
+        security_group: None
+        public_ip_name: None
+        virtual_network: '/subscriptions/xxx/resourceGroups/RG-Core-Infrastructure/providers/Microsoft.Network/virtualNetworks/VNET-DEVOPS'
+        subnet_name: resource_group
+        dns_servers:
+          - 0.0.0.0
+          - 0.0.0.0
+        create_with_security_group: false
+        ip_configurations:
+          - name: ipconfig1
+            primary: true
+            private_ip_allocation_method: Static
+            private_ip_address: 0.0.0.0

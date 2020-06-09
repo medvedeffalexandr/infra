@@ -1,0 +1,11 @@
+- name: create snapshot
+  hosts: localhost
+  gather_facts: no
+  connection: local
+  tasks:
+    - name: create snapshot
+      azure_rm_snapshot:
+        resource_group: resource_group
+        name: snapshot-test-comp
+        location: westeurope
+        os_type: Linux

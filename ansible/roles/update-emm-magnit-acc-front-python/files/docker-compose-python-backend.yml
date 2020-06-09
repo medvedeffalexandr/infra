@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+  emm-python-backend:
+    image: image_name
+    container_name: container_name
+    restart: always
+    mem_limit: 512m
+    environment:
+      - DATABASE_USERNAME=db_username
+      - DATABASE_PASSWORD=db_pass
+      - DATABASE_URL=db_url
+      - LDAP_TEST_USER=ldap_user
+      - LDAP_TEST_PASSWORD=ldap_pass
+      - LDAP_HOST=ldap_url
+      - LDAP_ACCESS_GROUP=ldap_access_group
+    volumes:
+      - /opt/logfiles:/opt/data/project/files/logfiles:rw
+    ports:
+      - '127.0.0.1:8000:8000'

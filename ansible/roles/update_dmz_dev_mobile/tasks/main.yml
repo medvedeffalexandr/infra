@@ -1,0 +1,53 @@
+---
+
+- name: copy image_name.tar with owner and permission  in server:/tmp
+  copy:
+    src: /tmp/image_name.tar
+    dest: /tmp/image_name.tar
+    owner: user
+    group: user
+    mode: u=rw,g=r,o=r
+
+- name: copy image_name.tar with owner and permission  in server:/tmp
+  copy:
+    src: /tmp/image_name.tar
+    dest: /tmp/image_name.tar
+    owner: user
+    group: user
+    mode: u=rw,g=r,o=r
+
+- name: copy image_name.tar with owner and permission  in server:/tmp
+  copy:
+    src: /tmp/image_name.tar
+    dest: /tmp/image_name.tar
+    owner: user
+    group: user
+    mode: u=rw,g=r,o=r
+
+#- name: docker load image from archive
+#  docker_image:
+#    name: image_name
+#    tag: latest
+#    push: no
+#    load_path: /tmp/image_name.tar
+#    source: load
+#
+#- name: docker down container_name
+#  docker_compose:
+#    project_src: /tmp
+#    files: file.yml
+#    state: absent
+#  register: output
+#
+#- name: docker up container_name
+#  docker_compose:
+#    project_src: /tmp
+#    files: file.yml
+#  register: output
+#
+#- name: docker prune images dangling
+#  docker_prune:
+#    containers: false
+#    images: true
+#    images_filters:
+#      dangling: true

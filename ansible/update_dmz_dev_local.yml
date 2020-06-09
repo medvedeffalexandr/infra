@@ -1,0 +1,7 @@
+---
+
+- hosts: "{{ HOSTS }}"
+  become: false
+  gather_facts: false
+  roles:
+    - update_dmz_dev_local

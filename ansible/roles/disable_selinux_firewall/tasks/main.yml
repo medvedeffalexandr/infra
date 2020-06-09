@@ -1,0 +1,16 @@
+---
+
+- name: Disable SELinux
+  selinux:
+    state: disabled
+
+- name: Stop service firewalld
+  systemd:
+    name: firewalld
+    state: stopped
+    enabled: no
+    daemon_reload: yes
+
+- name: Reboot machine
+  reboot:
+    reboot_timeout: 3600

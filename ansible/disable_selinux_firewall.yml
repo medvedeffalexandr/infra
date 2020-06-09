@@ -1,0 +1,6 @@
+---
+- hosts: "{{ HOSTS }}"
+  become: yes
+  gather_facts: no
+  roles:
+    - disable_selinux_firewall

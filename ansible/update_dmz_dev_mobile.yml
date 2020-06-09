@@ -1,0 +1,9 @@
+---
+
+- hosts: "{{ HOSTS }}"
+  become: false
+  gather_facts: false
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  roles:
+    - update_dmz_dev_mobile

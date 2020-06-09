@@ -1,0 +1,13 @@
+LINK='тот гит с которого хотим стянуть репозиторий' && DIR='/home/aimedvedev/git'
+git clone --mirror "$LINK" "$DIR"
+cd $DIR && git lfs fetch --all
+LINK_DST='тот гит в который вливаем репозиторий' && REMOTE='magnit-vpn'
+git remote add "$REMOTE" "$LINK_DST" && git lfs push --all "$REMOTE" && git push --all "$REMOTE"
+
+
+#Пример
+LINK='https://coderepo.corp.tander.ru/inner-enterprise-projects/android/tanderstore/magnit-vpn.git' && DIR='/home/aimedvedev/git'
+git clone --mirror "$LINK" "$DIR"
+cd "$DIR" && git lfs fetch --all
+LINK_DST='http://192.168.0.101/magnit-vpn/magnit-vpn.git' && REMOTE='magnit-vpn'
+git remote add "$REMOTE" "$LINK_DST" && git lfs push --all "$REMOTE" && git push --all "$REMOTE"

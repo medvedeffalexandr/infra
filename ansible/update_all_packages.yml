@@ -1,0 +1,7 @@
+---
+
+- hosts: "{{ HOSTS }}"
+  become: yes
+  gather_facts: no
+  roles:
+    - update_all_packages

@@ -1,0 +1,14 @@
+---
+
+- name: create availability-set
+  gather_facts: no
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: create an availability set for managed disk vm
+      azure_rm_availabilityset:
+        name: availability-set
+        resource_group: resource_group
+        platform_update_domain_count: 5
+        platform_fault_domain_count: 2
+        sku: Aligned

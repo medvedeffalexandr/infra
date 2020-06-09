@@ -1,0 +1,10 @@
+- name: Start Azure VM
+  hosts: localhost
+  gather_facts: no
+  connection: local
+  tasks:
+    - name: Start virtual machine
+      azure_rm_virtualmachine:
+        resource_group: resource_group
+        name: inno-test-comp
+

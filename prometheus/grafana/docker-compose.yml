@@ -1,0 +1,16 @@
+version: "2"
+
+volumes:
+    grafana_data: {}
+
+services:
+  grafana:
+    image: innodockerregistry.azurecr.io/grafana
+    container_name: grafana
+    user: "472"
+    volumes:
+      - /etc/localtime:/etc/localtime
+    restart: always
+    mem_limit: 2048M
+    ports:
+      - "0.0.0.0:8060:3000"

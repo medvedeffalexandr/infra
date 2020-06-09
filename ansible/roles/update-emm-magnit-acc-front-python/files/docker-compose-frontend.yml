@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  emm-frontend:
+    image: image_name
+    mem_limit: 512m
+    container_name: container_name
+    restart: always
+    ports:
+      - '127.0.0.1:3000:80'

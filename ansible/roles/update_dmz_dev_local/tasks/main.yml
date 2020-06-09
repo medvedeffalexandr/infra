@@ -1,0 +1,46 @@
+---
+
+- name: docker login
+  shell: 'docker login registry_name -u registry_name -p password'
+
+- name: pull docker images
+  docker_image:
+    name: "{{ item }}"
+    source: pull
+  with_items:
+    - image_name
+
+- name: delete in /tmp image.tar
+  file:
+    path: /tmp/"{{ item }}"
+    state: absent
+  with_items:
+    - image_name.tar
+
+- name: docker save image_name
+  docker_image:
+    name: image_name
+    tag: latest
+    archive_path: /tmp/image_name.tar
+    source: local
+
+- name: docker save image_name
+  docker_image:
+    name: image_name
+    tag: latest
+    archive_path: /tmp/image_name.tar
+    source: local
+
+- name: docker save image_name
+  docker_image:
+    name: image_name
+    tag: latest
+    archive_path: /tmp/image_name.tar
+    source: local
+
+- name: docker prune images dangling
+  docker_prune:
+    containers: false
+    images: true
+    images_filters:
+      dangling: true

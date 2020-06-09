@@ -1,0 +1,14 @@
+---
+
+- name: clean /etc/yum.repos.d/
+  file:
+    state: absent
+    path: /etc/yum.repos.d/
+
+- name: copy all files from folder to remote folder /etc/yum.repos.d/
+  copy:
+    src: ../files/
+    dest: /etc/yum.repos.d/
+    owner: root
+    group: root
+    mode: u+rw,g-wx,o-wx

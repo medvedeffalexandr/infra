@@ -1,0 +1,10 @@
+- name: power off vm
+  hosts: localhost
+  gather_facts: no
+  connection: local
+  tasks:
+    - name: power off vm
+      azure_rm_virtualmachine:
+        resource_group: resource_group
+        name: inno-test-comp
+        started: no

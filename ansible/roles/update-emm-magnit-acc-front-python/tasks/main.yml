@@ -1,0 +1,56 @@
+---
+
+- name: docker login
+  shell: 'docker login registry_name -u login_user -p password'
+
+- name: pull docker images
+  docker_image:
+    name: "{{ item }}"
+    source: pull
+  with_items:
+    - image_name
+
+- name: copy all docker-compose files to remote folder /tmp
+  copy:
+    src: ../files/
+    dest: /tmp
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+
+- name: stop container container_name
+  docker_container:
+    name: container_name
+    state: stopped
+
+- name: remove container container_name
+  docker_container:
+    name: container_name
+    state: absent
+
+- name: docker-compose up container_name
+  docker_compose:
+    project_src: /tmp
+    files: fiel.yml
+
+- name: stop container container_name
+  docker_container:
+    name: container_name
+    state: stopped
+
+- name: remove container container_name
+  docker_container:
+    name: container_name
+    state: absent
+
+- name: docker-compose up container_name
+  docker_compose:
+    project_src: /tmp
+    files: file.yml
+
+- name: docker prune images dangling
+  docker_prune:
+    containers: false
+    images: true
+    images_filters:
+      dangling: true

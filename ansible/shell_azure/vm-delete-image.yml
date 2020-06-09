@@ -1,0 +1,12 @@
+---
+- name: delete image
+  hosts: localhost
+  gather_facts: false
+  connection: local
+  tasks:
+    - name: delete image
+      azure_rm_image:
+        state: absent
+        resource_group: resource_group
+        name: image-test-comp
+        source: inno-test-comp

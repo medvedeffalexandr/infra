@@ -1,0 +1,28 @@
+---
+
+- name: install docker-ce and docker-compose
+  yum:
+    name:
+      - docker-ce
+      - docker-compose
+    state: present
+
+- name: start docker service
+  service:
+    name: docker
+    state: started
+    enabled: true
+
+- name: copy daemon.json to /etc/docker/
+  copy:
+    src: ../files/
+    dest: /etc/docker/
+    owner: root
+    group: root
+    mode: u+rw,g-wx,o-wx
+
+- name: systemctl daemon-reload
+  systemd:
+    state: restarted
+    daemon_reload: true
+    name: docker
