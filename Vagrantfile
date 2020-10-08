@@ -13,16 +13,7 @@ Vagrant.configure("2") do |config|
     ansible.vm.network "forwarded_port", guest: 80, host: 80
 
     ansible.ssh.insert_key = false
-    ansible.ssh.private_key_path = [
-      '~/.vagrant.d/insecure_private_key',
-      '/home/aimedvedev/.ssh/id_rsa'
-    ]
-
-    ansible.vm.provision "file", source: "/home/aimedvedev/.ssh/id_rsa.pub", destination: "/tmp/aimedvedev.pub"
-
-    ansible.vm.provision "shell", inline: <<-SHELL
-      cat /tmp/aimedvedev.pub >> /home/vagrant/.ssh/authorized_keys
-    SHELL
+    ansible.ssh.private_key_path = ['~/.vagrant.d/insecure_private_key']
   end
 
 end
