@@ -1,1 +1,4 @@
 .idea/
+.vagrant
+Vagrant_ansible/haproxy/.vagrant
+.gitignore
