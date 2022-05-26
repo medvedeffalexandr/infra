@@ -1,7 +1,0 @@
----
-
-- hosts: vagrant
-  become: true
-  gather_facts: true
-  roles:
-    - haproxy_install
